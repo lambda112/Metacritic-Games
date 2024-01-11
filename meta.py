@@ -1,4 +1,5 @@
 import requests as r
+import pandas as pd 
 from selectolax.parser import HTMLParser
 
 # Parse HTML
@@ -21,6 +22,16 @@ def get_game_description():
     desc = [i.text().replace("\n", "") for i in tree.css("div[class *= 'desc'] > span")] 
     return desc
 
-print(get_game_description())
+# Create Pandas DataFrame
+def create_table():
+    data = {
+        "Name": get_game_names(),
+        "Rating": get_game_rating(),
+        "Description": get_game_description()
+    }
 
+    game_info = pd.DataFrame(data).set_index("Name")
+    return game_info.to_excel("MetaCritic.xlsx")
+
+print(create_table())
 
