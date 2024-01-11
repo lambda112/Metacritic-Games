@@ -11,8 +11,16 @@ def get_game_names():
     names = [i.text() for i in tree.css("div > h3 > span + span")]   
     return names
 
+# Get Rating of Each Game
 def get_game_rating():
     rating = [i.text() for i in tree.css("span div > span")] 
     return rating
 
-print(get_game_rating())
+# Get Description of Each Game
+def get_game_description():
+    desc = [i.text().replace("\n", "") for i in tree.css("div[class *= 'desc'] > span")] 
+    return desc
+
+print(get_game_description())
+
+
