@@ -11,5 +11,8 @@ def get_game_names():
     names = [i.text() for i in tree.css("div > h3 > span + span")]   
     return names
 
-print(get_game_names())
+def get_game_rating():
+    rating = [i.text() for i in tree.css("span div > span")] 
+    return rating
 
+print(get_game_rating())
