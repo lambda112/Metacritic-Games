@@ -40,6 +40,7 @@ for x in range(1,545):
 
     # Write to an html file all to get images included 
     game_data = zip(get_game_images(), get_game_names(), get_game_rating(), get_game_description())
+    
     for i in game_data:
         with open("Metacritic.html", "a", encoding = "utf-8") as f:
             f.write(f"<img src = '{i[0]}' alt = '{i[1]}'>")
